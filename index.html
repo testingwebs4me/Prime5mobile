@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PRIME by Asma - Catering & Food Services</title>
     <style>
-        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
@@ -158,7 +157,10 @@
 
         /* Header */
         header {
-            background: linear-gradient(rgba(35, 31, 32, 0.7), rgba(35, 31, 32, 0.8)), url('https://images.unsplash.com/photo-1616668856493-9df876327739?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center / cover;
+            background: linear-gradient(rgba(35, 31, 32, 0.7), rgba(35, 31, 32, 0.8)), url('https://images.unsplash.com/photo-1616668856493-9df876327739?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: white;
             padding: 8rem 0 6rem;
             text-align: center;
@@ -233,6 +235,11 @@
             z-index: 2;
             max-width: 700px;
             margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: none;
         }
 
         /* Services Section */
@@ -380,12 +387,41 @@
             font-size: 1.1rem;
         }
 
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-item {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .service-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .service-item:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
         /* Responsive Design */
         @media (max-width: 1024px) {
             .container {
                 padding: 0 15px;
             }
-
+            
             .service-item {
                 gap: 2rem;
             }
@@ -591,76 +627,97 @@
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="nav-logo">
-                <img src="https://i.ibb.co/RGmRw9zf/prime-png.jpg">
-            </div>
+            <a href="#hero" class="nav-logo">
+                <img src="https://i.ibb.co/RGmRw9zf/prime-png.jpg" alt="PRIME Logo">
+            </a>
             <ul class="nav-links">
-                <li><a href="#catering-services">Catering Services</a></li>
-                <li><a href="#white-label-manufacturing">White Label Manufacturing</a></li>
-                <li><a href="#supplying-hotels-cafes">Supplying Hotels & Cafés</a></li>
-                <li><a href="#contact-us">Contact Us</a></li>
+                <li><a href="#catering">Catering Services</a></li>
+                <li><a href="#white-label">White Label Manufacturing</a></li>
+                <li><a href="#supplying">Supplying Hotels & Cafés</a></li>
+                <li><a href="#contact">Contact Us</a></li>
             </ul>
-            <div class="mobile-menu-toggle">
+            <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <ul>
-            <li><a href="#catering-services">Catering Services</a></li>
-            <li><a href="#white-label-manufacturing">White Label Manufacturing</a></li>
-            <li><a href="#supplying-hotels-cafes">Supplying Hotels & Cafés</a></li>
-            <li><a href="#contact-us">Contact Us</a></li>
+            <li><a href="#catering" onclick="closeMobileMenu()">Catering Services</a></li>
+            <li><a href="#white-label" onclick="closeMobileMenu()">White Label Manufacturing</a></li>
+            <li><a href="#supplying" onclick="closeMobileMenu()">Supplying Hotels & Cafés</a></li>
+            <li><a href="#contact" onclick="closeMobileMenu()">Contact Us</a></li>
         </ul>
     </div>
+
+    <!-- Header -->
     <header>
-        <div class="header-content">
-            <div class="logo">PRIME</div>
-            <div class="brand-by">Professional Catering & Food Services</div>
-            <div class="tagline">The Kitchen Behind Your Success</div>
-            <h1 class="hero-title">We're the kitchen behind brands, events, and businesses.</h1>
-            <p class="hero-description">Whether you're hosting, launching, or selling — PRIME handles the craft, quality, and consistency so you don't have to.</p>
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">PRIME</h1>
+                <p class="brand-by">Professional Catering & Food Services</p>
+                <h2 class="hero-title">The Kitchen Behind Your Success</h2>
+                <p class="hero-description">We're the kitchen behind brands, events, and businesses. Whether you're hosting, launching, or selling — PRIME handles the craft, quality, and consistency so you don't have to.</p>
+            </div>
         </div>
     </header>
-    <section class="services" id="catering-services">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>The Kitchen Behind Your Success</h2>
+                <p>We're the kitchen behind brands, events, and businesses. Whether you're hosting, launching, or selling — PRIME handles the craft, quality, and consistency so you don't have to.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
         <div class="container">
             <h2 class="section-title">What We Do</h2>
-            <div class="service-item">
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0">
-                </div>
+            
+            <!-- Catering Services -->
+            <div id="catering" class="service-item">
                 <div class="service-content">
                     <h3>Catering Services</h3>
                     <p>Full-scale food production for any occasion — customized, punctual, and seamless.</p>
                     <ul class="service-features">
-                        <li>Corporate Catering: Daily meals, executive meetings, staff events</li>
-                        <li>Event Catering: Launches, weddings, private gatherings, VIP functions</li>
-                        <li>Tailored Menus: Designed around your theme, crowd, or brand</li>
+                        <li><strong>Corporate Catering:</strong> Daily meals, executive meetings, staff events</li>
+                        <li><strong>Event Catering:</strong> Launches, weddings, private gatherings, VIP functions</li>
+                        <li><strong>Tailored Menus:</strong> Designed around your theme, crowd, or brand</li>
                     </ul>
                 </div>
-            </div>
-            <div class="service-item">
                 <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1628591667015-652ca2f54d4b">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0" alt="Catering Services">
                 </div>
+            </div>
+
+            <!-- White Label Manufacturing -->
+            <div id="white-label" class="service-item">
                 <div class="service-content">
                     <h3>White Label Manufacturing</h3>
-                    <p>Have the recipe or the concept? Let us bring it to life — under your brand name.</p>
+                    <p>Have the recipe or the concept? Let us bring it to life — under <strong>your brand name</strong>.</p>
                     <ul class="service-features">
                         <li>Full production & packaging, made-to-spec</li>
                         <li>Ideal for food brands, influencers, and private-label ventures</li>
                         <li>Confidential, reliable, and ready to scale with you</li>
                     </ul>
                 </div>
-            </div>
-            <div class="service-item">
                 <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1628591667015-652ca2f54d4b">
+                    <img src="https://images.unsplash.com/photo-1628591667015-652ca2f54d4b" alt="White Label Manufacturing">
                 </div>
+            </div>
+
+            <!-- Supplying Hotels & Cafés -->
+            <div id="supplying" class="service-item">
                 <div class="service-content">
                     <h3>Supplying Hotels & Cafés</h3>
                     <p>Baked goods, sweets, and snacks — made daily, delivered fresh.</p>
@@ -670,26 +727,34 @@
                         <li>Flexible, dependable restocking based on your business volume</li>
                     </ul>
                 </div>
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff" alt="Supplying Hotels & Cafés">
+                </div>
             </div>
         </div>
     </section>
-    <section class="contact" id="contact-us">
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
         <div class="container">
             <h2>Let's Work Together</h2>
-            <p>Looking to launch your food line, fuel an event, or stock your café with premium snacks? We're ready when you are.</p>
+            <p>Looking to launch your food line, fuel an event, or stock your café with premium snacks? <strong>We're ready when you are.</strong></p>
             <div class="contact-info">
                 <div class="contact-item">
-                    <div class="contact-icon">📩</div>
-                    <div class="contact-text">Sales@Prime.sa</div>
+                    <span class="contact-icon">📩</span>
+                    <span class="contact-text">Sales@Prime.sa</span>
                 </div>
                 <div class="contact-item">
-                    <div class="contact-icon">💬</div>
-                    <div class="contact-text">Whatsapp</div>
+                    <span class="contact-icon">💬</span>
+                    <a href="https://wa.me/966552651344" target="_blank" style="color: white; text-decoration: none;">
+                        <span class="contact-text">Whatsapp</span>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
-  <script>
+
+    <script>
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
             const menuToggle = document.querySelector('.mobile-menu-toggle');
